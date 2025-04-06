@@ -1,0 +1,317 @@
+.chat-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Responsive design for narrow screens */
+@media (max-width: 768px) {
+    .chat-container {
+        flex-direction: column;
+    }
+    
+    .sidebar, .chat-window, .reply-pane {
+        width: 100% !important;
+        height: 100vh;
+        position: absolute;
+        transition: transform 0.3s ease;
+    }
+    
+    .sidebar {
+        z-index: 1;
+        transform: translateX(0);
+    }
+    
+    .sidebar.hidden {
+        transform: translateX(-100%);
+    }
+    
+    .chat-window {
+        z-index: 2;
+        transform: translateX(100%);
+    }
+    
+    .chat-window.visible {
+        transform: translateX(0);
+    }
+    
+    .reply-pane {
+        z-index: 3;
+        transform: translateX(100%);
+    }
+    
+    .reply-pane.visible {
+        transform: translateX(0);
+    }
+}
+  
+.sidebar {
+    width: 250px;
+    background-color: #2c2f33;
+    color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between; 
+}
+
+.channel-list {
+    flex-grow: 1; 
+    overflow-y: auto;
+}
+  
+.channel {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s ease;
+    color: #b9bbbe;
+}
+  
+.channel:hover {
+    background-color: #40444b;
+    color: #ffffff;
+}
+
+/* Style for selected channel */
+.channel.selected {
+    background-color: #393c43;
+    color: #ffffff;
+    font-weight: 500;
+    border-left: 3px solid #7289da;
+    padding-left: 7px; /* Adjust padding to account for border */
+}
+
+.channel.selected:hover {
+    background-color: #4a4d55;
+}
+  
+.chat-window {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #36393f;
+    color: white;
+    padding: 20px;
+    transition: width 0.3s ease;
+}
+
+/* Chat window when reply thread is visible */
+.chat-window.with-thread {
+    width: 65%; /* Reduce width when thread is visible */
+}
+  
+.messages-container {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+  
+.message-bubble {
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    max-width: 60%;
+}
+  
+.message-bubble.user {
+    background-color: #5865F2;
+    align-self: flex-end;
+}
+  
+.message-bubble.other {
+    background-color: #40444b;
+    align-self: flex-start;
+}
+  
+.input-container {
+    display: flex;
+    gap: 10px;
+}
+  
+input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+  
+button {
+    background-color: #7289da;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.unread-badge {
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-left: 5px;
+}
+
+.chat-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 5px;
+    display: block;
+}
+  
+.reaction-container {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+  
+.reaction {
+    padding: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: #40444b;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+}
+
+.reaction:hover {
+    background-color: #5865F2;
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff4d4d;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+  
+.logout-btn:hover {
+    background-color: #d43f3f;
+}
+
+/* Thread view as third column */
+.reply-pane {
+    position: relative;
+    width: 35%;
+    border-left: 1px solid #40444b;
+    background-color: #2f3136;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.close-thread-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: transparent;
+    color: #b9bbbe;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.close-thread-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.back-button {
+    display: none;
+    align-items: center;
+    background-color: #40444b;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.back-button svg {
+    margin-right: 5px;
+}
+
+.back-button:hover {
+    background-color: #5d6269;
+}
+
+@media (max-width: 768px) {
+    .back-button {
+        display: flex;
+    }
+    
+    .close-thread-btn {
+        display: none;
+    }
+}
+
+.reply-pane h3 {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #40444b;
+    color: #ffffff;
+}
+  
+.reply-bubble {
+    background-color: #40444b;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+  
+.reply-count {
+    font-size: 14px;
+    color: #ffcc00;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.reply-count:hover {
+    text-decoration: underline;
+}
+
+.reaction-container span[title] {
+    position: relative;
+}
+  
+.reaction-container span[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+/* Thread input container */
+.reply-pane .input-container {
+    margin-top: auto;
+    padding-top: 15px;
+}
+

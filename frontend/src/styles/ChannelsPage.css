@@ -1,0 +1,98 @@
+/* Main container for the Channels Page */
+.channels-page {
+  display: flex;
+  height: 100vh;
+  background-color: #36393f;
+  color: white;
+}
+
+/* Sidebar styling for the Channel List */
+.sidebar {
+  width: 250px;
+  background-color: #2c2f33;
+  color: white;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+}
+
+.channel-list {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+/* Channel list item style */
+.channel-item {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.channel-item:hover {
+  background-color: #40444b;
+}
+
+.create-channel {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.create-channel input {
+  flex-grow: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.create-channel button {
+  background-color: #7289da;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.create-channel button:hover {
+  background-color: #5865F2;
+}
+
+/* Settings button */
+.settings-btn {
+  background-color: #7289da;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.settings-btn:hover {
+  background-color: #5865F2;
+}
+
+/* Logout button */
+.logout-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff4d4d;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #d43f3f;
+}
+
+  
